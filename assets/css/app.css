@@ -1,9 +1,40 @@
 * {
   padding: 0;
   margin: 0;
-  line-height: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 1024px;
+}
+.container .input h2 {
+  margin-bottom: 2rem;
+}
+.container .display-penumpang h2 {
+  margin-bottom: 2rem;
+}
+.container .display-penumpang .penumpang {
+  display: flex;
+  width: 40%;
+}
+.container .display-penumpang .penumpang .nama {
+  flex: 1;
+}
+.container .penumpang-turun h2 {
+  margin-bottom: 2rem;
+}
+.container .penumpang-turun .penumpang-turun {
+  display: flex;
+  width: 40%;
+}
+.container .penumpang-turun .penumpang-turun .nama {
+  flex: 1;
 }
 
 /*# sourceMappingURL=app.css.map */

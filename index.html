@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengelolaan angkot</title>
 
+    <link rel="stylesheet" href="./assets/css/app.css">
+
 </head>
+
 <body>
-    
+
     <div class="container">
         <div class="input">
             <h2>Kelola Penumpang</h2>
+            <form>
+                <input type="text" class="input-form" autofocus>
+                <button class="submit-btn">tambah</button>
+            </form>
         </div>
-        <div class="penumpang">
-            <ul class="daftar-penumpang"></ul>
+        <div class="display-penumpang">
+            <h2>Daftar penumpang</h2>
+            <ul class="daftar-penumpang">
+                <div class="penumpang">
+                    <li class="nama">joko</li>
+                    <button class="turun">turun</button>
+                </div>
+            </ul>
+        </div>
+        <div class="penumpang-turun">
+            <h2>Penumpang Turun</h2>
+            <ul class="daftar-penumpang-turun">
+                <div class="penumpang-turun">
+                    <li class="nama">joko</li>
+                    <button class="turun">turun</button>
+                </div>
+            </ul>
         </div>
     </div>
 
     <script src="./assets/javascript/script.js"></script>
 </body>
+
 </html>
