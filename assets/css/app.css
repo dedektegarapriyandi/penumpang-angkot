@@ -29,11 +29,11 @@
 .container .penumpang-turun h2 {
   margin-bottom: 2rem;
 }
-.container .penumpang-turun .penumpang-turun {
+.container .penumpang-turun .penumpang {
   display: flex;
   width: 40%;
 }
-.container .penumpang-turun .penumpang-turun .nama {
+.container .penumpang-turun .penumpang .nama {
   flex: 1;
 }
 
