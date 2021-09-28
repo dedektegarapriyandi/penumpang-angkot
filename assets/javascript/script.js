@@ -3,7 +3,7 @@ const submitBtn = document.querySelector(".submit-btn");
 const daftarPenumpang = document.querySelector(".daftar-penumpang");
 const daftarPenumpangTurun = document.querySelector(".daftar-penumpang-turun");
 
-const createElement = (namaPenumpang, section) => {
+const createElement = (namaPenumpang, section, btnClass) => {
     // div
     const newDiv = document.createElement("div");
     newDiv.classList.add("penumpang");
@@ -14,10 +14,10 @@ const createElement = (namaPenumpang, section) => {
     newLi.innerText = namaPenumpang;
     newDiv.appendChild(newLi);
 
-    // button
+    // button turun
     const newBtn = document.createElement("button");
-    newBtn.classList.add("turun");
-    newBtn.innerText = "turun";
+    newBtn.classList.add(btnClass);
+    newBtn.innerText = btnClass;
     newDiv.appendChild(newBtn);
 
     // add to ul
@@ -44,7 +44,7 @@ const addPenumpang = (e) => {
         }
     }
 
-    createElement(input.value, daftarPenumpang);
+    createElement(input.value, daftarPenumpang, "turun");
     penumpang.push(input.value);
     localStorage.setItem("penumpang", JSON.stringify(penumpang));
 
@@ -60,15 +60,15 @@ const getPenumpangNaik = () => {
     }
 
     penumpang.forEach((nama) => {
-        createElement(nama, daftarPenumpang);
+        createElement(nama, daftarPenumpang, "turun");
     });
 }
 
 const turunPenumpang = (e) => {
     if (e.target.classList.contains("turun")) {
-        if(localStorage.getItem("penumpangTurun") === null) {
+        if (localStorage.getItem("penumpangTurun") === null) {
             penumpangTurun = [];
-        }else {
+        } else {
             penumpangTurun = JSON.parse(localStorage.getItem("penumpangTurun"));
         }
 
@@ -77,7 +77,7 @@ const turunPenumpang = (e) => {
 
         namaPTurun.forEach((nama) => {
             penumpangTurun.push(nama);
-            createElement(nama, daftarPenumpangTurun)
+            createElement(nama, daftarPenumpangTurun, "hapus");
         });
 
         e.target.parentElement.remove();
@@ -88,18 +88,29 @@ const turunPenumpang = (e) => {
 }
 
 const getPenumpangTurun = () => {
-    if(localStorage.getItem("penumpangTurun") === null) {
+    if (localStorage.getItem("penumpangTurun") === null) {
         penumpangTurun = [];
-    }else {
+    } else {
         penumpangTurun = JSON.parse(localStorage.getItem("penumpangTurun"));
     }
 
     penumpangTurun.forEach((nama) => {
-        createElement(nama, daftarPenumpangTurun);
+        createElement(nama, daftarPenumpangTurun, "hapus");
     });
+}
+
+const hapusPenumpangTurun = (e) => {
+    if (e.target.classList.contains("hapus")) {
+        const index = e.target.parentElement.children[0].innerText;
+
+        penumpangTurun.splice(penumpangTurun.indexOf(index), 1);
+        e.target.parentElement.remove();
+        localStorage.setItem("penumpangTurun", JSON.stringify(penumpangTurun));
+    }
 }
 
 window.addEventListener("DOMContentLoaded", getPenumpangNaik);
 window.addEventListener("DOMContentLoaded", getPenumpangTurun);
 submitBtn.addEventListener("click", addPenumpang);
 daftarPenumpang.addEventListener("click", turunPenumpang);
+daftarPenumpangTurun.addEventListener("click", hapusPenumpangTurun);
